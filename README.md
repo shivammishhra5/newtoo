@@ -1,10 +1,8 @@
 <div align="center">
 
 <<<<<<< HEAD
-# 🚀 newtoo
 =======
 # NEWTOO
->>>>>>> 6a5fca1ad1e8bea1d7f3b8e54b80bc0986e92656
 
 ### ⚙️ Operations Under Pressure — Full-Stack Work Management Platform
 
