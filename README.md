@@ -1,201 +1,284 @@
 <div align="center">
 
-# newtoo
+# 🚀 newtoo
 
-### A modern web application built for streamlined digital workflows
+### ⚙️ Operations Under Pressure — Full-Stack Work Management Platform
 
-**Live Demo:** [newtoo.kartikcomtech.in](https://newtoo.kartikcomtech.in/public/login)  
-**Source Code:** [github.com/shivammishhra5/newtoo](https://github.com/shivammishhra5/newtoo)
+**Create. Assign. Track. Resolve.**  
+A team-focused web application concept for managing operational work items, workflows, and accountability.
+
+[🌐 Live Demo](https://newtoo.kartikcomtech.in/public/login) · [💻 GitHub Repository](https://github.com/shivammishhra5/newtoo)
+
+![Project Status](https://img.shields.io/badge/Project-newtoo-6366f1?style=for-the-badge)
+![Focus](https://img.shields.io/badge/Focus-Full--Stack%20Engineering-0ea5e9?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Web%20Application-10b981?style=for-the-badge)
 
 </div>
 
 ---
 
-## Overview
+## 📌 Table of Contents
 
-**newtoo** is a web-based application designed to provide users with a centralized interface for accessing its available features and workflows. This repository contains the project source code and is intended to support ongoing development, configuration, and deployment.
+- [✨ Overview](#-overview)
+- [🎯 Core Features](#-core-features)
+- [🧰 Technology Stack](#-technology-stack)
+- [🏗️ System Architecture](#️-system-architecture)
+- [🔄 Work-Item Lifecycle](#-work-item-lifecycle)
+- [🛡️ Security and Reliability](#️-security-and-reliability)
+- [⚡ Getting Started](#-getting-started)
+- [🧪 Testing Strategy](#-testing-strategy)
+- [🧠 Engineering Decisions](#-engineering-decisions)
+- [⚠️ Known Limitations](#️-known-limitations)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
 
-> **Project identity:** The application and repository are branded as **newtoo**.
+## ✨ Overview
 
-## Live Application
+**newtoo** is a team-oriented work management platform concept designed to bring operational tasks into one central workspace. It focuses on assigning ownership, managing priorities, progressing work through defined states, and preserving an understandable activity history.
 
-- **Application:** [Open newtoo](https://newtoo.kartikcomtech.in/public/login)
-- **Login:** Visit the live application to access the sign-in page.
-- **Repository:** [View source on GitHub](https://github.com/shivammishhra5/newtoo)
+The engineering goal is not simply to provide CRUD screens. It is to handle important real-world cases such as conflicting updates, duplicate requests, team-level permissions, and traceable changes.
 
-The live application may require valid account credentials. Do not publish private credentials, production environment files, API keys, or database passwords in this repository.
+> 💡 **Project principle:** Prefer reliable behaviour, clear engineering decisions, and tested workflows over unnecessary feature count.
 
-## Key Areas
+## 🎯 Core Features
 
-- **Web-based access** — access the application through a browser.
-- **Authentication interface** — sign-in page with email and password fields.
-- **Account recovery** — a “Forgot your password?” option is available on the login screen.
-- **Deployable codebase** — source code can be configured for a suitable development or hosting environment.
-- **Maintainable project identity** — project-facing documentation uses the name `newtoo`.
+> The list below describes the intended project scope. Keep each item only if it is implemented in the current repository.
 
-*Document additional modules and capabilities here as they are verified in the source code.*
+- 🗂️ **Work-item management** — create, view, update, assign, and resolve operational items.
+- 🔁 **Controlled workflow** — manage states such as Open, In Progress, Awaiting Approval, Resolved, and Closed.
+- 👥 **Team-based roles** — support role concepts such as Viewer, Member, Lead, and Admin.
+- 📊 **Action-oriented dashboard** — highlight assigned work, urgent unassigned items, and pending approvals.
+- 🔎 **Search, filters, and pagination** — find relevant items without loading the entire dataset into the browser.
+- 🧾 **Activity timeline** — record important changes to state, owner, and priority, along with comments.
+- 🔐 **Server-side authorization** — validate permissions for protected operations and team-owned resources.
+- ⚔️ **Concurrency safeguards** — handle competing claims and stale edits safely.
+- 🔁 **Idempotent requests** — prevent retries or double submissions from creating duplicate records.
+- 🧪 **Automated tests** — verify critical workflow, authorization, and conflict behaviour.
 
-## Technology Stack
+## 🧰 Technology Stack
 
-The exact stack and required versions should be confirmed from the repository's dependency and configuration files before deployment.
+The following is the **recommended stack** for this architecture. Verify the actual dependencies in the repository before presenting every technology as implemented.
 
-For a PHP/Laravel-based installation, the project may use components such as:
+| Layer | Technology | Purpose |
+|---|---|---|
+| 🎨 Frontend | React.js + TypeScript | User interface and typed components |
+| 🔄 Data fetching | TanStack Query | Caching, refetching, and server-state management |
+| ⚙️ Backend | Node.js + Express.js + TypeScript | API endpoints and application logic |
+| 🔌 API | REST | Communication between frontend and backend |
+| 🐘 Database | PostgreSQL | Persistent relational data and transactions |
+| 🧬 ORM | Prisma | Database access and migrations |
+| 🧪 Testing | Jest + Supertest | Automated API and behaviour tests |
+| 🐳 Local environment | Docker Compose | Repeatable local services |
+| 📬 Background jobs (optional) | PostgreSQL outbox or BullMQ + Redis | Reliable asynchronous processing |
+| 🌿 Version control | Git + GitHub | Source control and collaboration |
 
-- PHP
-- Laravel
-- MySQL or another configured database
-- Composer
-- Node.js and npm, if frontend assets require a build step
+## 🏗️ System Architecture
 
-**Important:** Treat this list as a setup guide, not a definitive inventory. Check `composer.json`, `package.json`, `.env.example`, and the project documentation to confirm the actual dependencies and version requirements.
+The diagram below illustrates the **proposed architecture**. Adjust it to match the implementation in this repository.
 
-## Getting Started
+```mermaid
+flowchart TD
+    U["👤 User / Team Member"] --> B["🌐 Browser"]
+    B --> UI["⚛️ React + TypeScript UI"]
+    UI --> Q["🔄 TanStack Query"]
+    Q --> API["🔌 REST API"]
+    API --> AUTH["🔐 Authentication & Authorization"]
+    AUTH --> SVC["⚙️ Work-Item Service"]
+    SVC --> RULES["🔁 Workflow & Validation Rules"]
+    RULES --> DB[("🐘 PostgreSQL")]
+    DB --> ITEMS["🗂️ Work Items"]
+    DB --> TEAMS["👥 Users, Teams & Memberships"]
+    DB --> HIST["🧾 Activity Events & Comments"]
+    DB --> IDEM["🔑 Idempotency Records"]
+    SVC --> OUTBOX["📬 Transactional Outbox (optional)"]
+    OUTBOX --> WORKER["🔧 Background Worker (optional)"]
+    WORKER --> RETRY["♻️ Retry / Failure Handling"]
+```
 
-### Prerequisites
+### 🔍 Request lifecycle
 
-Install the tools required by the versions declared in the project files. For a Laravel-based project, these commonly include:
+1. 👤 A user performs an action in the browser.
+2. ⚛️ The frontend sends a request through the API client.
+3. 🔐 The backend authenticates the user and checks access to the relevant team and resource.
+4. ⚙️ The service validates the requested change and allowed workflow transition.
+5. 🐘 The database applies the change transactionally, including its activity event where supported.
+6. ✅ The API returns a success or a clear error response.
+7. 🔄 The frontend refreshes or reconciles the displayed data.
 
-- PHP with the required extensions
-- Composer
-- A supported database server
-- Node.js and npm, if the project has frontend build scripts
-- Git
+## 🔄 Work-Item Lifecycle
 
-### 1. Clone the repository
+The following is an example workflow for the proposed system. Enforce transitions on the server, not only in the UI.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Open
+    Open --> InProgress: Member starts work
+    InProgress --> AwaitingApproval: Submit for approval
+    AwaitingApproval --> InProgress: Lead requests changes
+    AwaitingApproval --> Resolved: Lead approves
+    Resolved --> Closed: Close item
+```
+
+### 🧭 Example dashboard views
+
+- 📌 **Assigned to me** — items owned by the current user.
+- 🚨 **Unassigned urgent** — high-priority items without an owner.
+- 🕒 **Awaiting my approval** — items requiring action from an authorized Lead.
+- 🔍 **Filtered work list** — search and filter by status, priority, team, or assignee.
+
+## 🛡️ Security and Reliability
+
+- 🔐 **Authorization:** enforce permissions on the server for every protected action.
+- ⚔️ **Concurrency:** use conditional updates or version checks to prevent conflicting edits.
+- 🔁 **Idempotency:** make retried requests safe when supported by the API.
+- 🧾 **Consistent history:** write activity events in the same transaction as the corresponding change.
+- 📄 **Pagination:** filter and paginate large datasets on the server.
+- 🔑 **Secrets management:** keep passwords, tokens, and production credentials out of Git.
+- 🔒 **Transport security:** use HTTPS in production.
+- 💾 **Backups:** back up production data before schema changes or deployments.
+
+## ⚡ Getting Started
+
+### 📋 Prerequisites
+
+Install the versions compatible with the repository configuration:
+
+- 🟢 Node.js and npm
+- 🐘 PostgreSQL, or Docker with Docker Compose
+- 🌿 Git
+
+### 1️⃣ Clone the repository
 
 ```bash
 git clone https://github.com/shivammishhra5/newtoo.git
 cd newtoo
 ```
 
-### 2. Install dependencies
-
-For a Laravel/PHP project:
-
-```bash
-composer install
-```
-
-If a `package.json` file is present and frontend assets need to be compiled:
+### 2️⃣ Install dependencies
 
 ```bash
 npm install
-npm run build
 ```
 
-Use the scripts defined in `package.json`; not every project has a `build` script.
+### 3️⃣ Configure environment variables
 
-### 3. Configure the environment
+If `.env.example` exists, copy it to `.env`.
 
-If the project includes `.env.example`, copy it to `.env`:
-
+**macOS / Linux**
 ```bash
 cp .env.example .env
 ```
 
-On Windows Command Prompt:
-
+**Windows Command Prompt**
 ```bat
 copy .env.example .env
 ```
 
-Update the environment configuration with your local database name, username, password, application URL, mail settings, and other required values. Never commit your real `.env` file.
+Fill in the required local values using the exact variable names expected by the project. Typical settings may include a database connection string, application port, and authentication secret.
 
-For Laravel projects, generate an application key if the application setup requires it:
+> ⚠️ Never commit `.env` files containing real credentials or production secrets.
 
-```bash
-php artisan key:generate
-```
+### 4️⃣ Start the database
 
-### 4. Configure the database
-
-1. Create a database for the local installation.
-2. Add the database connection details to `.env`.
-3. Follow the project's installation guide.
-4. Run migrations only if the project documentation indicates that this is the correct setup step.
+If the repository includes `docker-compose.yml` or `compose.yaml`:
 
 ```bash
-php artisan migrate
+docker compose up -d
 ```
 
-**Caution:** Do not run migrations or destructive database commands on production without a verified backup and a clear understanding of their effects.
+Otherwise, start PostgreSQL separately and configure the database connection in `.env`.
 
-### 5. Start the development server
+### 5️⃣ Apply database migrations
 
-For Laravel projects:
+For a repository using Prisma with migration files, a development command may be:
 
 ```bash
-php artisan serve
+npx prisma migrate dev
 ```
 
-Open the local URL printed in the terminal. For production, configure the web server to serve the framework's required public directory and follow the hosting provider's deployment instructions.
+Run this only if Prisma is installed and the project's migration setup supports it. Follow the repository's actual setup instructions if they differ.
 
-## Configuration & Deployment
+### 6️⃣ Start the development server
 
-Before deploying **newtoo**:
+Inspect `package.json` for the scripts available in this project. A common development command is:
 
-- Confirm the PHP/runtime and dependency versions required by the repository.
-- Configure production environment variables securely.
-- Point the web server's document root to the application's intended public directory.
-- Ensure storage and cache directories have the required permissions.
-- Configure HTTPS and application URL settings.
-- Verify database connectivity, mail delivery, scheduled tasks, queues, and storage if the application uses them.
-- Review application logs after deployment.
-- Back up the database and uploaded files before updates.
+```bash
+npm run dev
+```
 
-Do not expose `.env`, logs, database dumps, private uploads, or other sensitive files through the public web root.
+The exact command and local URL depend on the repository configuration.
 
-## Repository Structure
+## 🧪 Testing Strategy
 
-The exact structure depends on the files included in the repository. In a typical Laravel application, important locations include:
+Run the test script defined in `package.json`. If a test script is configured, it may be run with:
 
-| Path | Purpose |
-|---|---|
-| `app/` | Application classes and business logic |
-| `routes/` | Route definitions |
-| `resources/` | Views and frontend source assets |
-| `public/` | Public web assets and entry point |
-| `config/` | Application configuration |
-| `database/` | Migrations, seeders, and factories |
-| `storage/` | Logs, cache, and application-generated files |
-| `.env.example` | Example environment configuration, if provided |
+```bash
+npm test
+```
 
-Only rely on paths that are actually present in this repository.
+### ✅ Critical behaviours to test
 
-## Security Notes
+- ⚔️ **Concurrent claim:** when two users claim the same unassigned item, only one succeeds.
+- 🕰️ **Stale update:** an update based on an outdated version is rejected.
+- 🔁 **Idempotency:** repeating a request with the same key does not create duplicate records.
+- 🚦 **Workflow enforcement:** invalid transitions and unauthorized approvals are rejected.
+- 🛡️ **Team authorization:** users cannot access resources outside their permitted teams.
+- 🧾 **Activity consistency:** history stays consistent with the corresponding data change.
 
-- Never commit production credentials, access tokens, private keys, or real `.env` files.
-- Use strong passwords and HTTPS for deployed environments.
-- Keep dependencies and server software updated.
-- Restrict database access and apply least-privilege permissions.
-- Back up production data before upgrades.
-- Review logs carefully and avoid exposing sensitive information in error pages.
+## 🧠 Engineering Decisions
 
-## Troubleshooting
+Use `ENGINEERING_DECISIONS.md` to record important trade-offs. For each decision, document:
 
-- **Dependency installation fails:** Check the PHP/runtime version and extensions required by the dependency files.
-- **Database connection fails:** Verify the database name, host, username, password, and database service status.
-- **HTTP 500 error:** Inspect application and hosting logs; avoid displaying detailed errors publicly in production.
-- **Assets do not load:** Verify the configured application URL, public directory, and frontend build output.
-- **Login does not work:** Confirm the account exists, credentials are correct, and the application can reach its database.
+- **Context** — the problem being solved.
+- **Options considered** — alternatives and their trade-offs.
+- **Decision** — the approach selected and why.
+- **Consequences** — benefits, risks, and limitations.
 
-## Contributing
+Suggested topics:
 
-1. Fork the repository or create a feature branch.
-2. Make focused, clearly described changes.
-3. Test changes in a non-production environment.
-4. Submit a pull request with a summary and testing notes.
+1. 🗃️ Data model and activity history
+2. ⚔️ Concurrency control and stale updates
+3. 🔐 Team-level authorization
+4. 🔁 Idempotency and request retries
+5. 📄 Search, filtering, and pagination
+6. 📬 Synchronous versus asynchronous processing
 
-Please do not include secrets, customer data, or production database exports in commits or pull requests.
+## ⚠️ Known Limitations
 
-## License
+Document the actual limitations of the current implementation. Review whether:
 
-Add the license and usage terms that apply to this project. Do not assume that the code is open source or freely reusable unless the project owner has explicitly selected an appropriate license.
+- Workflow transitions and approval rules are fully enforced.
+- Concurrency, idempotency, and authorization have automated tests.
+- List endpoints implement server-side filters and pagination.
+- Background processing and retry behaviour are implemented.
+- Deployment configuration is secured for production.
+
+Do not describe a planned feature as complete until it has been implemented and tested.
+
+## 🤝 Contributing
+
+Contributions and constructive feedback are welcome.
+
+1. 🌿 Create a feature branch.
+2. 🛠️ Make focused changes with clear commit messages.
+3. 🧪 Add or update tests for changed behaviour.
+4. ✅ Run the relevant checks locally.
+5. 📬 Open a pull request describing the change and test results.
+
+Please do not commit secrets, customer data, production database exports, or private configuration files.
+
+## 📄 License
+
+Add the license selected by the project owner. Unless a license is included, do not assume the code is available for unrestricted reuse.
 
 ---
 
 <div align="center">
 
-**newtoo** · [Live Application](https://newtoo.kartikcomtech.in/public/login) · [GitHub Repository](https://github.com/shivammishhra5/newtoo)
+### 🚀 newtoo
+
+**Clear ownership. Reliable workflows. Accountable operations.**
+
+[🌐 Live Demo](https://newtoo.kartikcomtech.in/public/login) · [💻 GitHub Repository](https://github.com/shivammishhra5/newtoo)
 
 </div>
