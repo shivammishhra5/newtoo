@@ -1,6 +1,6 @@
 <div align="center">
 
-# newtoo
+# NEWTOO
 
 ### A modern web application built for streamlined digital workflows
 
@@ -196,6 +196,6 @@ Add the license and usage terms that apply to this project. Do not assume that t
 
 <div align="center">
 
-**newtoo** · [Live Application](https://newtoo.kartikcomtech.in/public/login) · [GitHub Repository](https://github.com/shivammishhra5/newtoo)
+**Newtoo** · [Live Application](https://newtoo.kartikcomtech.in/public/login) · [GitHub Repository](https://github.com/shivammishhra5/newtoo)
 
 </div>
