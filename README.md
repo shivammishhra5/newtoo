@@ -7,7 +7,13 @@
 **Create. Assign. Track. Resolve.**  
 A team-focused web application concept for managing operational work items, workflows, and accountability.
 
-[🌐 Live Demo](https://newtoo.kartikcomtech.in/public/login) · [💻 GitHub Repository](https://github.com/shivammishhra5/newtoo)
+[🌐 Live Demo](https://newtoo.kartikcomtech.in/public/login) · 
+Login Details:
+
+email id: admin@newtoo.kartikcomtech.in
+password: admin@newtoo.kartikcomtech.in
+
+[💻 GitHub Repository](https://github.com/shivammishhra5/newtoo)
 
 ![Project Status](https://img.shields.io/badge/Project-newtoo-6366f1?style=for-the-badge)
 ![Focus](https://img.shields.io/badge/Focus-Full--Stack%20Engineering-0ea5e9?style=for-the-badge)
