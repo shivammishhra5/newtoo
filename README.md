@@ -275,8 +275,7 @@ Add the license selected by the project owner. Unless a license is included, do 
 
 <div align="center">
 
-<<<<<<< HEAD
-### 🚀 newtoo
+### 🚀 Newtoo
 
 **Clear ownership. Reliable workflows. Accountable operations.**
 
