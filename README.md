@@ -63,7 +63,7 @@ The following is the **recommended stack** for this architecture. Verify the act
 |---|---|---|
 | 🎨 Frontend | React.js + TypeScript | User interface and typed components |
 | 🔄 Data fetching | TanStack Query | Caching, refetching, and server-state management |
-| ⚙️ Backend | Node.js + Express.js + TypeScript | API endpoints and application logic |
+| ⚙️ Backend | PHP + Node.js + Express.js + TypeScript | API endpoints and application logic |
 | 🔌 API | REST | Communication between frontend and backend |
 | 🐘 Database | PostgreSQL | Persistent relational data and transactions |
 | 🧬 ORM | Prisma | Database access and migrations |
