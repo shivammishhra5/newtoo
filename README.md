@@ -1,6 +1,10 @@
 <div align="center">
 
+<<<<<<< HEAD
 # 🚀 newtoo
+=======
+# NEWTOO
+>>>>>>> 6a5fca1ad1e8bea1d7f3b8e54b80bc0986e92656
 
 ### ⚙️ Operations Under Pressure — Full-Stack Work Management Platform
 
@@ -275,10 +279,14 @@ Add the license selected by the project owner. Unless a license is included, do 
 
 <div align="center">
 
+<<<<<<< HEAD
 ### 🚀 newtoo
 
 **Clear ownership. Reliable workflows. Accountable operations.**
 
 [🌐 Live Demo](https://newtoo.kartikcomtech.in/public/login) · [💻 GitHub Repository](https://github.com/shivammishhra5/newtoo)
+=======
+**Newtoo** · [Live Application](https://newtoo.kartikcomtech.in/public/login) · [GitHub Repository](https://github.com/shivammishhra5/newtoo)
+>>>>>>> 6a5fca1ad1e8bea1d7f3b8e54b80bc0986e92656
 
 </div>
